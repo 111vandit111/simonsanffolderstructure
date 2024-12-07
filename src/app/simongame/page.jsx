@@ -11,7 +11,7 @@ const App = () => {
   const [hasGameStarted, setStartGame] = useState(false);
   const [failed, setFailed] = useState({
     text: "Click any key to Start Game",
-    bgColor: "#1f3a8a",
+    bgColor: "#011e41",
   });
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const App = () => {
         setTimeout(() => {
           setFailed({
             text: "Click any key to Start Game",
-            bgColor: "#1f3a8a",
+            bgColor: "#011e41",
           });
         }, 1500);
         reset();
@@ -67,6 +67,7 @@ const App = () => {
   };
 
   const startGame = () => {
+    if(hasGameStarted) return;
     setGameSequence([]);
     setUserSequence([]);
     setIsUserTurn(false);
@@ -97,14 +98,14 @@ const App = () => {
         </Link>
       </div>
       <div
-        className="flex flex-col items-center justify-center text-white"
+        className="flex flex-col items-center justify-center text-white focus-visible:outline-0"
         tabIndex={0}
         onKeyDown={startGame}
       >
         <h1 className="text-3xl font-bold mb-8">
           {hasGameStarted
             ? isUserTurn
-              ? "Your Turn"
+              ? "Level " + gameSequence.length + ": " + "Your Turn"
               : "My Turn"
             : failed.text}
         </h1>
@@ -121,7 +122,7 @@ const App = () => {
             <div
               key={color}
               id={color}
-              className={`w-32 h-32 rounded-lg cursor-pointer transition-opacity ${
+              className={`w-32 h-32 rounded-2xl border-4 border-black cursor-pointer transition-opacity ${
                 {
                   green: "bg-green-500",
                   red: "bg-red-500",
