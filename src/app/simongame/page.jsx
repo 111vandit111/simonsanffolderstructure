@@ -3,6 +3,12 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 const colors = ["green", "red", "yellow", "blue"];
+import { Press_Start_2P } from "next/font/google"; 
+
+const press_start_2P = Press_Start_2P({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 const App = () => {
   const [gameSequence, setGameSequence] = useState([]);
@@ -102,7 +108,7 @@ const App = () => {
         tabIndex={0}
         onKeyDown={startGame}
       >
-        <h1 className="text-3xl font-bold mb-8">
+        <h1 className={`text-3xl font-bold mb-8 p-2 text-center ${press_start_2P.className}`}>
           {hasGameStarted
             ? isUserTurn
               ? "Level " + gameSequence.length + ": " + "Your Turn"
