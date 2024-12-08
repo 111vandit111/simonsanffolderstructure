@@ -136,7 +136,7 @@ const App = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-900 min-h-screen">
+    <div className="p-6 bg-gray-900 min-h-screen text-white">
       <div className="flex justify-between ">
         <h1 className="text-2xl font-bold mb-6 px-6">Folder Structure</h1>
         <div className="flex gap-8">
@@ -153,7 +153,7 @@ const App = () => {
             key={key}
             name={key}
             children={value}
-            path={key} // Root path
+            path={key} 
             onCreate={setCurrActive}
             onDelete={removeItem}
             activeFolder={currActive}
